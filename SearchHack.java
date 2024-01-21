@@ -83,7 +83,7 @@ public final class SearchHack extends Hack
 	private int prevLimit;
 	private boolean notify;
 	
-	private final HashMap<Chunk, ChunkSearcher> searchers = new HashMap<>();
+	private HashMap<Chunk, ChunkSearcher> searchers = new HashMap<>();
 	private final Set<Chunk> chunksToUpdate =
 		Collections.synchronizedSet(new HashSet<>());
 	private ExecutorService pool1;
@@ -146,6 +146,7 @@ public final class SearchHack extends Hack
 		}
 		
 		chunksToUpdate.clear();
+		searchers = new HashMap<>();
 	}
 	
 	@Override
