@@ -14,7 +14,7 @@ Replace these file:
   src/main/java/net/wurstclient/util/ChunkSearcher.java
 
 Build
-...
+```
   ./gradlew genSources
   ./gradlew build
-...
+```
