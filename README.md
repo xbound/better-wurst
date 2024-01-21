@@ -7,7 +7,7 @@ Enhanced some modules of Wurst.
 
 ![截图 2024-01-22 04-15-35](https://github.com/xbound/better-wurst/assets/54498130/02b28b88-dd28-4ae0-9f11-77caefb50856)
 
-![截图 2024-01-22 04-17-41](https://github.com/xbound/better-wurst/assets/54498130/87d6b934-029d-47f1-8a83-a16e8b65a375)
+![截图 2024-01-22 04-28-39](https://github.com/xbound/better-wurst/assets/54498130/9a98ff61-1dc6-4f83-99f8-d5871289dfc6)
 
 How to use:
 
