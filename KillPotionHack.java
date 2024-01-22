@@ -110,7 +110,7 @@ public final class KillPotionHack extends Hack
 		LINGERING("Lingering", "Lingering Potion", Items.LINGERING_POTION),
 		
 		// does not work 
-		ARROW("Arrow", "Arrow(not work)", Items.TIPPED_ARROW);
+		// ARROW("Arrow", "Arrow", Items.TIPPED_ARROW);
 		
 		private final String name;
 		private final String itemName;
