@@ -11,6 +11,8 @@ Enhanced some modules of Wurst.
 
 How to use:
 
+(Release is available if you do not want to build.)
+
 Select a branch except main.
 
 Download the source code from https://github.com/Wurst-Imperium/Wurst7
