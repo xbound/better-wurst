@@ -107,7 +107,7 @@ public final class KillPotionHack extends Hack
 		
 		SPLASH("Splash", "Splash Potion", Items.SPLASH_POTION),
 		
-		LINGERING("Lingering", "Lingering Potion", Items.LINGERING_POTION),
+		LINGERING("Lingering", "Lingering Potion", Items.LINGERING_POTION);
 		
 		// does not work 
 		// ARROW("Arrow", "Arrow", Items.TIPPED_ARROW);
