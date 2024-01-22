@@ -1,7 +1,7 @@
 # better-wurst
 Enhanced some modules of Wurst.
 
-![截图 2024-01-23 01-06-28](https://github.com/xbound/better-wurst/assets/54498130/23d42ce7-f7e6-4cae-8b2c-b59bdb135971)
+![截图 2024-01-23 01-14-40](https://github.com/xbound/better-wurst/assets/54498130/d250f818-40af-406d-b9f9-1576f1746e37)
 
 ![截图 2024-01-22 04-15-05](https://github.com/xbound/better-wurst/assets/54498130/3aea35ea-380f-4ef4-944b-74d69481379b)
 
