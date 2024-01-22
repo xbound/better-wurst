@@ -23,6 +23,10 @@ public final class SpeedHackHack extends Hack implements UpdateListener
 		"How fast you expect.", 1, 0, 32, 0.01, ValueDisplay.DECIMAL);
 	private final CheckboxSetting wsnake = new CheckboxSetting("Work when snaking",
 		"", true);
+	private final CheckboxSetting asprint = new CheckboxSetting("AutoSprint",
+		"Activate sprint if walking forward.", false);
+	private final CheckboxSetting mjump = new CheckboxSetting("MiniJump",
+		"Activate mini jump if on ground.", false);
 	private final CheckboxSetting bypass = new CheckboxSetting("Bypass NoCheat+",
 		"Limit speed to highest value that works on NoCheat+ version.", false);
 	public SpeedHackHack()
@@ -31,6 +35,8 @@ public final class SpeedHackHack extends Hack implements UpdateListener
 		setCategory(Category.MOVEMENT);
 		addSetting(speed);
 		addSetting(wsnake);
+		addSetting(mjump);
+		addSetting(asprint);
 		addSetting(bypass);
 	}
 	
@@ -50,19 +56,19 @@ public final class SpeedHackHack extends Hack implements UpdateListener
 	public void onUpdate()
 	{
 		// return if sneaking or not walking
-		if(MC.player.isSneaking() && !wsnake.isChecked() || 
+		if(!wsnake.isChecked() && MC.player.isSneaking() || 
 		MC.player.forwardSpeed == 0 && MC.player.sidewaysSpeed == 0){
 			return;
 		}
 		
 		// activate sprint if walking forward
-		/*if(MC.player.forwardSpeed > 0 && !MC.player.horizontalCollision)
+		if(asprint.isChecked() && MC.player.forwardSpeed > 0 && !MC.player.horizontalCollision)
 			MC.player.setSprinting(true);
 		
 		// activate mini jump if on ground
-		if(!MC.player.isOnGround())
+		if(mjump.isChecked() && !MC.player.isOnGround())
 			return;
-		*/
+		
 		double speedvalue=speed.getValue();
 		Vec3d v = MC.player.getVelocity();
 		MC.player.setVelocity(0 , v.y, 0);

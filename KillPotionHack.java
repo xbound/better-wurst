@@ -107,10 +107,10 @@ public final class KillPotionHack extends Hack
 		
 		SPLASH("Splash", "Splash Potion", Items.SPLASH_POTION),
 		
-		LINGERING("Lingering", "Lingering Potion", Items.LINGERING_POTION);
+		LINGERING("Lingering", "Lingering Potion", Items.LINGERING_POTION),
 		
-		// does not work
-		// ARROW("Arrow", "Arrow", Items.TIPPED_ARROW);
+		// does not work 
+		ARROW("Arrow", "Arrow", Items.TIPPED_ARROW);
 		
 		private final String name;
 		private final String itemName;
@@ -138,14 +138,14 @@ public final class KillPotionHack extends Hack
 			if(target.getSelected() == MobType.NU || target.getSelected() == MobType.B){
 			effect = new NbtCompound();
 			effect.putInt("Amplifier", 125);
-			effect.putInt("Duration", 2000);
+			//effect.putInt("Duration", 0);
 			effect.putInt("Id", 6);
 			effects.add(effect);
 			}
 			if(target.getSelected() == MobType.U || target.getSelected() == MobType.B){
 			effect = new NbtCompound();
 			effect.putInt("Amplifier", 125);
-			effect.putInt("Duration", 2000);
+			//effect.putInt("Duration", 0);
 			effect.putInt("Id", 7);
 			effects.add(effect);
 			}
