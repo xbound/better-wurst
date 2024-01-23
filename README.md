@@ -15,18 +15,10 @@ How to use:
 
 Select a branch except main.
 
-Download the source code from https://github.com/Wurst-Imperium/Wurst7
+Download the source code from https://github.com/Wurst-Imperium/Wurst7 with a corrected branch.
 
-Replace these file:
+Replace files in src folder (cp -rf)
 
-  src/main/java/net/wurstclient/hacks/...Hack.java
-  
-  src/main/java/net/wurstclient/util/ChunkSearcher.java
-
-Add a line into src/main/java/net/wurstclient/hack/HackList.java
-```
-public final GhastSimulatorHack ghastsimulatorHack = new GhastSimulatorHack();
-```
 Build
 ```
   ./gradlew genSources
