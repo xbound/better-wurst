@@ -37,6 +37,7 @@ public final class CmdList
 	public final FriendsCmd friendsCmd = new FriendsCmd();
 	public final GetPosCmd getPosCmd = new GetPosCmd();
 	public final GiveCmd giveCmd = new GiveCmd();
+	public final GcCmd gcCmd = new GcCmd();
 	public final GmCmd gmCmd = new GmCmd();
 	public final GoToCmd goToCmd = new GoToCmd();
 	public final GSLaunchCmd gSLaunchCmd = new GSLaunchCmd();
@@ -51,6 +52,7 @@ public final class CmdList
 	public final PotionCmd potionCmd = new PotionCmd();
 	public final ProtectCmd protectCmd = new ProtectCmd();
 	public final RenameCmd renameCmd = new RenameCmd();
+	public final RenameRCmd renameRCmd = new RenameRCmd();
 	public final RepairCmd repairCmd = new RepairCmd();
 	public final RvCmd rvCmd = new RvCmd();
 	public final SvCmd svCmd = new SvCmd();
