@@ -423,45 +423,18 @@ public final class ExcavatorHack extends Hack
 		if(posLookingAt != null && MC.options.useKey.isPressed())
 			step.pos = posLookingAt;
 	}
-	/*private void fillall(int x1,int y1,int z1,int x2,int y2,int y3){
-		int start,end,step;
-		String btf=block.getBlockName();
-		for(step=1;step*(Math.abs(Step.END_POS.pos.getY()-Step.START_POS.pos.getY())+1)*(Math.abs(Step.END_POS.pos.getZ()-Step.START_POS.pos.getZ())+1)<=32768;++step){
-		}
-		--step;
-		if(step==0){
-			start=Math.min(Step.START_POS.pos.getZ(),Step.END_POS.pos.getZ());
-			end=Math.max(Step.START_POS.pos.getZ(),Step.END_POS.pos.getZ());
-			for(step=1;step*(Math.abs(Step.END_POS.pos.getY()-Step.START_POS.pos.getY())+1)*(Math.abs(Step.END_POS.pos.getX()-Step.START_POS.pos.getX())+1)<=32768;++step){
-			}
-			--step;
-			if(step==0){
-				ChatUtils.error("Too many blocks.");
-			}else {
-				for(;start<=end;start+=step){
-				MC.getNetworkHandler().sendChatCommand("fill " + Step.START_POS.pos.getX() + " " +  Step.START_POS.pos.getY() + " " + start + " " + Step.END_POS.pos.getX() + " " + Step.END_POS.pos.getY() + " " + Math.min(start+step-1,end) + " " + btf);
-				}
-			}
-		}else {
-		start=Math.min(Step.START_POS.pos.getX(),Step.END_POS.pos.getX());
-		end=Math.max(Step.START_POS.pos.getX(),Step.END_POS.pos.getX());
-		for(;start<=end;start+=step){
-		MC.getNetworkHandler().sendChatCommand("fill " + start + " " +  Step.START_POS.pos.getY() + " " + Step.START_POS.pos.getZ() + " " + Math.min(start+step-1,end) + " " + Step.END_POS.pos.getY() + " " + Step.END_POS.pos.getZ() + " " + btf);
-		}
-	}
-	}*/
 	private void fillall(int x1,int y1,int z1,int x2,int y2,int z2){
 		int start,end,step;
 		String btf=block.getBlockName();
-		for(step=1;step*(Math.abs(y2-y1)+1)*(Math.abs(z2-z1)+1)<=32768;++step){
-		}
-		--step;
+		//for(step=1;step*(Math.abs(y2-y1)+1)*(Math.abs(z2-z1)+1)<=32768;++step){}
+		//--step;
+		step=32768/((Math.abs(y2-y1)+1)*(Math.abs(z2-z1)+1));
 		if(step==0){
 			start=Math.min(z1,z2);
 			end=Math.max(z1,z2);
-			for(step=1;step*(Math.abs(y2-y1)+1)*(Math.abs(x2-x1)+1)<=32768;++step){
-			}
-			--step;
+			//for(step=1;step*(Math.abs(y2-y1)+1)*(Math.abs(x2-x1)+1)<=32768;++step){}
+			step=32768/((Math.abs(y2-y1)+1)*(Math.abs(x2-x1)+1));
+			//--step;
 			if(step==0){
 				ChatUtils.error("Too many blocks.");
 			}else {
