@@ -23,6 +23,10 @@ Replace these file:
   
   src/main/java/net/wurstclient/util/ChunkSearcher.java
 
+Add a line into src/main/java/net/wurstclient/hack/HackList.java
+```
+public final GhastSimulatorHack ghastsimulatorHack = new GhastSimulatorHack();
+```
 Build
 ```
   ./gradlew genSources
