@@ -67,10 +67,12 @@ public final class ExcavatorHack extends Hack
 	
 	private final EnumSetting<Mode> mode =
 		new EnumSetting<>("Mode", Mode.values(), Mode.FAST);
-	
+	private final EnumSetting<FillMode> fmode =
+		new EnumSetting<>("Fill mode","Ignored in Fast and Legit mode.", FillMode.values(), FillMode.REPLACE);
 	private final BlockSetting block = new BlockSetting("Block to fill",
 		"The type of block to fill.\nIgnored in Fast and Legit mode.", "minecraft:air", true);
-		private final CheckboxSetting showarea = new CheckboxSetting("ShowArea", true);
+	private final CheckboxSetting showarea = new CheckboxSetting("ShowArea", true);
+	private final CheckboxSetting fc = new CheckboxSetting("Fill chunk-ly" , "Fill chunk by chunk instead of recursively.\nIgnored in Fast and Legit mode.", false);
 	public ExcavatorHack()
 	{
 		super("Excavator");
@@ -79,6 +81,8 @@ public final class ExcavatorHack extends Hack
 		addSetting(range);
 		addSetting(mode);
 		addSetting(showarea);
+		addSetting(fc);
+		addSetting(fmode);
 		addSetting(block);
 	}
 	
@@ -426,9 +430,27 @@ public final class ExcavatorHack extends Hack
 		if(posLookingAt != null && MC.options.useKey.isPressed())
 			step.pos = posLookingAt;
 	}
-	private void fillall(int x1,int y1,int z1,int x2,int y2,int z2){
+	private void fillall_chunk(int _x1,int _y1,int _z1,int _x2,int _y2,int _z2,String btf){
+		int x1,y1,z1,x2,y2,z2,x,y,z,xe,ze;
+		x1=Math.min(_x1,_x2);
+		x2=Math.max(_x1,_x2);
+		y1=Math.min(_y1,_y2);
+		y2=Math.max(_y1,_y2);
+		z1=Math.min(_z1,_z2);
+		z2=Math.max(_z1,_z2);
+		xe=(x2+16) & ~15;
+		ze=(z2+16) & ~15;
+		for(x=x1 & ~15;x<xe;x+=16){
+			for(z=z1 & ~15;z<ze;z+=16){
+				for(y=y1;y<=y2;y+=128){
+					MC.getNetworkHandler().sendChatCommand("fill " + Math.max(x,x1) + " " + y + " " + Math.max(z,z1) + " " + Math.min(x+15,x2) + " " + Math.min(y+127,y2) + " " + Math.min(z+15,z2) + " " + btf);
+				}
+			}
+		}
+		
+	}
+	private void fillall_recursive(int x1,int y1,int z1,int x2,int y2,int z2,String btf){
 		int start,end,step;
-		String btf=block.getBlockName();
 		//for(step=1;step*(Math.abs(y2-y1)+1)*(Math.abs(z2-z1)+1)<=32768;++step){}
 		//--step;
 		if(Math.abs(y2-y1)>32768){// almost improssible
@@ -465,6 +487,13 @@ public final class ExcavatorHack extends Hack
 		MC.getNetworkHandler().sendChatCommand("fill " + start + " " +  y1 + " " + z1 + " " + Math.min(start+step-1,end) + " " + y2 + " " + z2 + " " + btf);
 		}
 	}
+	}
+	private void fillall(int x1,int y1,int z1,int x2,int y2,int z2){
+		String btf=block.getBlockName() + " " + fmode.getSelected().toString();
+		if(fc.isChecked())
+			fillall_chunk(x1,y1,z1,x2,y2,z2,btf);
+		else
+			fillall_recursive(x1,y1,z1,x2,y2,z2,btf);
 	}
 	private void scanArea()
 	{
@@ -700,7 +729,27 @@ public final class ExcavatorHack extends Hack
 				pos -> eyesVec.squaredDistanceTo(Vec3d.of(pos))))
 			.collect(Collectors.toCollection(ArrayList::new));
 	}
-	
+	private static enum FillMode
+	{
+		REPLACE("replace"),
+		
+		KEEP("keep"),
+		
+		DESTROY("destroy");
+		
+		private final String name;
+		
+		private FillMode(String name)
+		{
+			this.name = name;
+		}
+		
+		@Override
+		public String toString()
+		{
+			return this.name;
+		}
+	}
 	private static enum Mode
 	{
 		FAST("Fast"),
