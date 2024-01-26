@@ -8,6 +8,7 @@ Enhanced some modules of Wurst.
 ![截图 2024-01-25 18-54-37](https://github.com/xbound/better-wurst/assets/54498130/5d242231-dc1b-4806-a1db-ef64cd1e4c8d)
 ![截图 2024-01-25 18-54-58](https://github.com/xbound/better-wurst/assets/54498130/32b1b1e7-915a-4e6b-9832-f08908adb10f)
 ![截图 2024-01-25 18-57-18](https://github.com/xbound/better-wurst/assets/54498130/2bdca89d-5967-4eaf-9198-81371110d33a)
+
 Other changes:
 
 add command .renamer can easily rename items repeat-ly (like aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa)
